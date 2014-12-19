@@ -65,5 +65,12 @@ public class KayitBean {
         cepTel.setKisi(kisi);
         evTel.setKisi(kisi);
         kisiService.ekle(kisi);
+        kisi= new Kisi();
+        cepTel= new Telefon();
+        evTel = new Telefon();
+                
+                
+                
+        
     }
 }
