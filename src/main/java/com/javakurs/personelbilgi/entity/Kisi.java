@@ -17,6 +17,8 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -25,7 +27,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author SBN
+ * @author Bora
  */
 @Entity
 @Table(catalog = "personelbilgi", schema = "")
@@ -70,6 +72,22 @@ public class Kisi implements Serializable {
 
     public Integer getId() {
         return id;
+    }
+    
+    @PrePersist
+    public void prePersistMethod()
+    {
+        for (Telefon telefon : telefonList) {
+            telefon.setKisi(this);
+        }
+    }
+    
+    @PreUpdate
+    public void preUpdateMethod()
+    {
+        for (Telefon telefon : telefonList) {
+            telefon.setKisi(this);
+        }
     }
 
     public void setId(Integer id) {
