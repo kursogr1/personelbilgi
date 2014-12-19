@@ -8,6 +8,7 @@ package com.javakurs.personelbilgi.entity;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -51,7 +52,7 @@ public class Kisi implements Serializable {
     @Size(min = 1, max = 20)
     @Column(nullable = false, length = 20)
     private String soyad;
-    @OneToMany(mappedBy = "kisi")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "kisi")
     private List<Telefon> telefonList;
 
     public Kisi() {
