@@ -25,7 +25,7 @@ public abstract class AbstractFacade<T> {
         getEntityManager().persist(entity);
     }
 
-    public void ubdate(T entity) {
+    public void update(T entity) {
         getEntityManager().merge(entity);
     }
 
